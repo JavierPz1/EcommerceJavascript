@@ -5,15 +5,12 @@ const mainCarrito = document.getElementsByClassName("mainCarrito");
 let carritoGuardado = JSON.parse(localStorage.getItem('Carrito de Compras'));
 let totalGuardado = JSON.parse(localStorage.getItem('Precio Total'));
 
-// const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
-// let totalCarrito = totalGuardado ? parseFloat(totalGuardado) : 0;
 
-// Elemento donde se mostrarán los productos del carrito
 const carritoContenedor = document.getElementById('carritoContenedor');
 
-// Función para mostrar los productos del carrito en la página
+// Funcion para mostrar los productos del carrito
 function mostrarCarrito() {
-    carritoContenedor.innerHTML = ''; // Limpiar el contenedor antes de añadir los elementos
+    carritoContenedor.innerHTML = ''; // Limpia el contenedor antes de añadir los elementos
 
     carritoGuardado.forEach((producto, index) => {
         const contenedorProducto = document.createElement('div');

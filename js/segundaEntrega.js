@@ -1,4 +1,4 @@
-alert("Hola profe y tutores, bienvenidos!!"); //despues lo borro esto :)
+/* alert("Hola profe y tutores, bienvenidos!!"); //despues lo borro esto :)
 const fechaActual = new Date() //fecha actual para el header
 console.log(fechaActual.getFullYear())
 
@@ -67,9 +67,9 @@ while (seleccionarProducto != "fin") {
                     carrito.cantidad++
                 }
             })
-        } else { */
-            carrito.push(productos[0]);
-//      }
+        } else {
+            carrito.push(productos[0]);        
+    }
     }
     else if (seleccionarProducto == (parseInt(2))) {
         carrito.push(productos[1]);
@@ -88,4 +88,4 @@ while (seleccionarProducto != "fin") {
 }
 
 console.log(carrito);
-//.................................................
+//................................................. */

@@ -1,0 +1,42 @@
+[
+    {
+        "idProducto": 1,
+        "nombre": "Whey protein ENA True Made",
+        "categoria": "proteina",
+        "img": "../multimedia/wheyprotein-ENAsport-chocolate-1kg.jpeg",
+        "kg": "900 gm",
+        "sabor": "Chocolate",
+        "precio": 18000,
+        "precioConIva": 18000
+    },
+    {
+        "idProducto": 2,
+        "nombre": "Whey Protein NutriLab",
+        "categoria": "proteina",
+        "img": "../multimedia/wheyprotein-nutrilab-chocolate-1kg.png",
+        "kg": "1 kg",
+        "sabor": "Chocolate",
+        "precio": 11000,
+        "precioConIva": 11000
+    },
+    {
+        "idProducto": 3,
+        "nombre": "Whey Protein Mervick",
+        "categoria": "proteina",
+        "img": "../multimedia/wheyprotein-mervick-vainilla-1kg.png",
+        "kg": "1 kg",
+        "sabor": "Vainilla",
+        "precio": 15000,
+        "precioConIva": 15000
+    },
+    {
+        "idProducto": 4,
+        "nombre": "Whey Protein SPX",
+        "categoria": "proteina",
+        "img": "../multimedia/wheyprotein-SPX-frutilla1-1kg.jpg",
+        "kg": "1 kg",
+        "sabor": "Frutilla",
+        "precio": 13000,
+        "precioConIva": 13000
+    }
+]

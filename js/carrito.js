@@ -5,11 +5,11 @@ let carritoGuardado = JSON.parse(localStorage.getItem('Carrito de Compras'));
 let totalGuardado = JSON.parse(localStorage.getItem('Precio Total'));
 
 const carritoContenedor = document.getElementById('carritoContenedor');
-carritoContenedor.style.width = "100%"
+carritoContenedor.style.width = "100%";
 carritoContenedor.style.paddingInline = "3%";
 
 const formularioContenedor = document.getElementById('formularioContenedor');
-formularioContenedor.style.width = "100%"
+formularioContenedor.style.width = "100%";
 formularioContenedor.style.paddingInline = "3%";
 
 
@@ -20,7 +20,7 @@ mostrarTotalCarrito.style.color = "#24ff6a";
 mostrarTotalCarrito.style.display = "flexbox";
 mostrarTotalCarrito.style.width = "100%";
 mostrarTotalCarrito.style.textAlign = "end";
-mostrarTotalCarrito.style.marginBottom = "100px"
+mostrarTotalCarrito.style.marginBottom = "100px";
 
 formularioContenedor.appendChild(mostrarTotalCarrito);
 
@@ -51,21 +51,27 @@ divFormulario.appendChild(formulario);
 
 formulario.innerHTML = `
 <div class="input-group mb-3">
-  <input id="subject" for="subject" type="text" aria-label="Nombres" class="form-control" placeholder="Nombre">
-  <input for=subject type="text" aria-label="Apellidos" class="form-control" placeholder="Apellido">
+  <label for="nombre"></label>
+  <input id="nombre" name="nombre" type="text" aria-label="Nombres" class="form-control" placeholder="Nombre">
+  <label for="nombre"></label>
+  <input id="apellido" name="apellido" type="text" aria-label="Apellidos" class="form-control" placeholder="Apellido">
 </div>
 
 <div id="message">
-    <input for="message" type="number" class="form-control mb-3" aria-label="Numero de celular" placeholder="Tel/Cel">
+    <label for="tel" class="d-none"></label>
+    <input id="tel" name="tel" type="number" class="form-control mb-3" aria-label="Numero de celular" placeholder="Tel/Cel">
     <div class="row g-3">
         <div class="col-sm-5">
-            <input for="message" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion">
+            <label for="direccion" class="d-none"></label>
+            <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion">
         </div>
         <div class="col-sm">
-            <input for="message" type="text" class="form-control" placeholder="Localidad" aria-label="Localidad">
+            <label for="localidad" class="d-none"></label>
+            <input id="localidad" name="localidad" type="text" class="form-control" placeholder="Localidad" aria-label="Localidad">
         </div>
         <div class="col-sm">
-            <input for="message" type="number" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal">
+            <label for="postal" class="d-none"></label>
+            <input id="postal" name="postal" type="number" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal">
         </div>
     </div>
 </div>
@@ -84,8 +90,7 @@ function mostrarCarrito() {
 
     carritoGuardado.forEach((producto, index) => {
         const contenedorProducto = document.createElement('div');
-        //contenedorProducto.style.backgroundImage ="linear-gradient(290deg,#c6ffe7,#FFFFFF)"
-        contenedorProducto.className = 'productoCarrito card mb-3';
+        contenedorProducto.className = 'card mb-3';
 
         contenedorProducto.innerHTML =
             `<div class="row g-0 fs-6">
@@ -160,11 +165,11 @@ mostrarCarrito()
 
  function enviarPedidoEmail(event) {
     event.preventDefault();
-    const fd = new FormData(this);
+    const fd = new FormData(formulario);
 
-    enviarEmail.setAttribute(
+     enviarEmail.setAttribute(
         'href',
-        `mailTo:javier_hp05@hotmail.com?subject=${fd.get('subject')}&body=${fd.get('message')}`
+        `mailTo:javier_hp05@hotmail.com?subject=${fd.get('nombre')} ${fd.get('apellido')}&body=${fd.get('tel')}  /  ${fd.get('direccion')}  /  ${fd.get('localidad')}  /  ${fd.get('postal')}`
     );
      
     enviarEmail.click();
@@ -172,4 +177,4 @@ mostrarCarrito()
 
 formulario.addEventListener('submit', enviarPedidoEmail);
 
-/* & body=${ carritoGuardado.producto.nombre }& body=${ carritoGuardado.producto.sabor }& body=${ carritoGuardado.producto.precioConIva }& body=${ carritoGuardado.producto.cantidad } */
+/* ${ carritoGuardado.producto.nombre }& ${ carritoGuardado.producto.sabor }& ${ carritoGuardado.producto.precioConIva }${ carritoGuardado.producto.cantidad } */

@@ -30,8 +30,9 @@ tituloTotalCarrito.appendChild(mostrarTotalCarrito);
 
 //Por cada producto crea una carta en el DOM
 const peticionProductosJson = async () => {
-    const respuesta = await fetch("/productos.json")
-    const data = await respuesta.json();
+    const respuesta = await fetch("/productos.json");
+    const datos = await respuesta.json();
+    const data = await datos;
     for (const item of data) {
         const contenedor = document.createElement("div");
         contenedor.className = "col";

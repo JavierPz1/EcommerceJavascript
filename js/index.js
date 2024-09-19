@@ -30,7 +30,7 @@ tituloTotalCarrito.appendChild(mostrarTotalCarrito);
 
 //Por cada producto crea una carta en el DOM
 const peticionProductosJson = async () => {
-    const respuesta = await fetch("../productos.json");
+    const respuesta = await fetch('../../productos.json');
     const datos = await respuesta.json();
     const data = await datos;
     for (const item of data) {
@@ -93,7 +93,6 @@ const peticionProductosJson = async () => {
             }
 
             Toastify({
-
                 text: "Producto agregado",
                 duration: 1000,
                 offset: {
@@ -121,3 +120,4 @@ const peticionProductosJson = async () => {
 
 
 peticionProductosJson();
+

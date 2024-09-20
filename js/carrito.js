@@ -176,5 +176,3 @@ mostrarCarrito()
 }
 
 formulario.addEventListener('submit', enviarPedidoEmail);
-
-/* ${ carritoGuardado.producto.nombre }& ${ carritoGuardado.producto.sabor }& ${ carritoGuardado.producto.precioConIva }${ carritoGuardado.producto.cantidad } */

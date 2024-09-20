@@ -29,23 +29,23 @@ tituloTotalCarrito.appendChild(mostrarTotalCarrito);
 
 
 //Por cada producto crea una carta en el DOM
-const peticionProductosJson = async () => {
-    const respuesta = await fetch('productos.json');
-    const datos = await respuesta.json();
-    const data = await datos;
-    for (const item of data) {
-        const contenedor = document.createElement("div");
-        contenedor.className = "col";
-        contenedor.style.minWidth = "340px";
-        contenedor.style.maxWidth = "400px";
-        contenedor.style.marginBottom = "30px";
-        contenedor.style.fontSize = "20px";
-        contenedor.style.color = "#484848";
-        contenedor.style.borderRadius = "10px";
-        
-        item.precioConIva = item.precioConIva * 1.21;
+document.addEventListener('DOMContentLoaded', () => {
+    fetch("../productos.json")
+        .then((response) => response.json())
+        .then((data) => {
+            for (const item of data) {
+                const contenedor = document.createElement("div");
+                contenedor.className = "col";
+                contenedor.style.minWidth = "340px";
+                contenedor.style.maxWidth = "400px";
+                contenedor.style.marginBottom = "30px";
+                contenedor.style.fontSize = "20px";
+                contenedor.style.color = "#484848";
+                contenedor.style.borderRadius = "10px";
 
-        contenedor.innerHTML = `
+                item.precioConIva = item.precioConIva * 1.21;
+
+                contenedor.innerHTML = `
             <div class="card h-100">
             <img src="${item.img}" alt="${item.nombre}" width="100%" class="img-thumbnail card-img-top" >
             <div class="card-body">
@@ -61,63 +61,61 @@ const peticionProductosJson = async () => {
             </div>
             </div>`;
 
-        
-        
-        productosIndex.appendChild(contenedor);
-    }
 
 
-    //funcion para agregar productos al carrito y sumar los precios
-    const botonesCarrito = document.getElementsByClassName("buttonCarrito");
-
-    for (const boton of botonesCarrito) {
-        boton.style.cssText = "background:linear-gradient(to right, #00d6bc, #24ff6a); color: #484848; border: none; padding: 3%; cursor: pointer; margin-top: 10px;";
-        boton.addEventListener("click", function () {
-            const productoNombre = this.getAttribute("data-nombre");
-            const product = data.find(p => p.nombre === productoNombre)
-
-            const productoEnCarrito = carrito.find(item => item.nombre === productoNombre);
-
-            if (productoEnCarrito) { // Si existe, incrementar la cantidad.
-                productoEnCarrito.cantidad += 1;
-            } else {  // Si no existe, agregar el producto al carrito.
-                carrito.push({
-                    id: product.idProducto,
-                    img: product.img,
-                    nombre: product.nombre,
-                    sabor: product.sabor,
-                    precio: product.precio,
-                    precioConIva: product.precioConIva,
-                    cantidad: 1
-                });
+                productosIndex.appendChild(contenedor);
             }
 
-            Toastify({
-                text: "Producto agregado",
-                duration: 1000,
-                offset: {
-                    x: 0,
-                    y: 50 
-                },
-                style: {
-                    background: "linear-gradient(to right, #00d6bc, #24ff6a)",
-                }
 
-            }).showToast();
+            //funcion para agregar productos al carrito y sumar los precios
+            const botonesCarrito = document.getElementsByClassName("buttonCarrito");
 
-            totalCarrito += product.precioConIva;
+            for (const boton of botonesCarrito) {
+                boton.style.cssText = "background:linear-gradient(to right, #00d6bc, #24ff6a); color: #484848; border: none; padding: 3%; cursor: pointer; margin-top: 10px;";
+                boton.addEventListener("click", function () {
+                    const productoNombre = this.getAttribute("data-nombre");
+                    const product = data.find(p => p.nombre === productoNombre)
 
-            mostrarTotalCarrito.innerText = `Total del Carrito: $${totalCarrito}`;
+                    const productoEnCarrito = carrito.find(item => item.nombre === productoNombre);
 
-            //Agrega al localStorage
-            localStorage.setItem("Carrito de Compras", JSON.stringify(carrito))
-            localStorage.setItem("Precio Total", totalCarrito.toFixed(2))
+                    if (productoEnCarrito) { // Si existe, incrementar la cantidad.
+                        productoEnCarrito.cantidad += 1;
+                    } else {  // Si no existe, agregar el producto al carrito.
+                        carrito.push({
+                            id: product.idProducto,
+                            img: product.img,
+                            nombre: product.nombre,
+                            sabor: product.sabor,
+                            precio: product.precio,
+                            precioConIva: product.precioConIva,
+                            cantidad: 1
+                        });
+                    }
+
+                    Toastify({
+                        text: "Producto agregado",
+                        duration: 1000,
+                        offset: {
+                            x: 0,
+                            y: 50
+                        },
+                        style: {
+                            background: "linear-gradient(to right, #00d6bc, #24ff6a)",
+                        }
+
+                    }).showToast();
+
+                    totalCarrito += product.precioConIva;
+
+                    mostrarTotalCarrito.innerText = `Total del Carrito: $${totalCarrito}`;
+
+                    //Agrega al localStorage
+                    localStorage.setItem("Carrito de Compras", JSON.stringify(carrito))
+                    localStorage.setItem("Precio Total", totalCarrito.toFixed(2))
+                })
+
+            }
         })
+})
 
-    }
-}
-
-
-
-peticionProductosJson();
 

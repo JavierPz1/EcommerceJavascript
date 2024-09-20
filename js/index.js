@@ -30,7 +30,7 @@ tituloTotalCarrito.appendChild(mostrarTotalCarrito);
 
 //Por cada producto crea una carta en el DOM
 
-fetch("../product.json")
+fetch("../aproductos.json")
     .then((response) => response.json())
     .then((data) => {
         for (const item of data) {

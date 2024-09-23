@@ -1,9 +1,9 @@
 [
     {
         "idProducto": 1,
-        "nombre": "Whey protein ENA True Made",
+        "nombre": "WHEY PROTEIN ENA TRUE MADE",
         "categoria": "proteina",
-        "img": "multimedia/wheyprotein-ENAsport-chocolate-1kg.jpeg",
+        "img": "multimedia/wheyprotein-ENA-chocolate-1kg.jpeg",
         "kg": "900 gm",
         "sabor": "Chocolate",
         "precio": 18000,
@@ -11,7 +11,7 @@
     },
     {
         "idProducto": 2,
-        "nombre": "Whey Protein NutriLab",
+        "nombre": "WHY PROTEIN NUTRILAB",
         "categoria": "proteina",
         "img": "multimedia/wheyprotein-nutrilab-chocolate-1kg.png",
         "kg": "1 kg",
@@ -21,7 +21,7 @@
     },
     {
         "idProducto": 3,
-        "nombre": "Whey Protein Mervick",
+        "nombre": "WHEY PROTEIN MERVICK",
         "categoria": "proteina",
         "img": "multimedia/wheyprotein-mervick-vainilla-1kg.png",
         "kg": "1 kg",
@@ -31,12 +31,32 @@
     },
     {
         "idProducto": 4,
-        "nombre": "Whey Protein SPX",
+        "nombre": "WHEY PROTEIN SPX",
         "categoria": "proteina",
         "img": "multimedia/wheyprotein-SPX-frutilla1-1kg.jpg",
         "kg": "1 kg",
         "sabor": "Frutilla",
         "precio": 13000,
         "precioConIva": 13000
+    },
+    {
+        "idProducto": 5,
+        "nombre": "CREATINA MONOHIDRATO GENTECH",
+        "categoria": "creatina",
+        "img": "multimedia/creatina-gentech-250gr.png",
+        "kg": "250 gr",
+        "sabor": "Neutro",
+        "precio": 20200,
+        "precioConIva": 20200
+    },
+    {
+        "idProducto": 6,
+        "nombre": "CREATINA MONOHIDRATO GENTECH",
+        "categoria": "creatina",
+        "img": "multimedia/creatina-gentech-500gr.jpg",
+        "kg": "500 gr",
+        "sabor": "Neutro",
+        "precio": 30500,
+        "precioConIva": 30500
     }
 ]

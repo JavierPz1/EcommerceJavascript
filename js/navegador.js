@@ -55,7 +55,7 @@ const enlaces = [
     },
     {
         link: "carrito",
-        nombre: "Carrito"
+        nombre: "Carrito",
     },
 ]
 
@@ -65,7 +65,7 @@ navegador.appendChild(ul);
 
 for (const link of enlaces) {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="${link.link}.html" class="text-decoration-none text-black-50">${link.nombre}</a>`
+    li.innerHTML = `<a href="${link.link}.html" class="text-decoration-none text-black-50 navbar-brand">${link.nombre}</a>`
     li.style.display = "flex";
     li.style.position = "relative";
     li.style.marginInline = "20px";

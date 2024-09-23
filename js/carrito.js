@@ -57,9 +57,10 @@ formulario.innerHTML = `
   <input id="apellido" name="apellido" type="text" aria-label="Apellidos" class="form-control" placeholder="Apellido">
 </div>
 
-<div id="message">
+<div>
     <label for="tel" class="d-none"></label>
     <input id="tel" name="tel" type="number" class="form-control mb-3" aria-label="Numero de celular" placeholder="Tel/Cel">
+
     <div class="row g-3">
         <div class="col-sm-5">
             <label for="direccion" class="d-none"></label>
@@ -73,15 +74,13 @@ formulario.innerHTML = `
             <label for="postal" class="d-none"></label>
             <input id="postal" name="postal" type="number" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal">
         </div>
+        
     </div>
 </div>
-
-<p class="form-text my-3 ms-2">Llegará tu pedido en 2 dias hábiles!!</p>
-`;
+<p class="form-text my-3 ms-2">Llegará tu pedido en 2 dias hábiles!!</p>`;
 
 formulario.appendChild(botonConfirmarCompra);
 formulario.appendChild(enviarEmail);
-
 
 
 // Funcion para mostrar los productos del carrito
@@ -109,7 +108,7 @@ function mostrarCarrito() {
             <p class="m-0">Cantidad: ${producto.cantidad}</p>
             </div>
 
-            <div class="d-flex align-items-center col-md-1 btn-group px-2">
+            <div class="d-flex align-items-center col-md-1 btn-group px-2 my-2">
             <button id="botonCantidad" class="btn btn-outline-danger rounded-pill" onclick="eliminarCantidad(${producto.id})">Eliminar</button>
             <span id="botonEliminar" role="button" class="mx-4 btn-close" onclick="eliminarDelCarrito(${index})"></span>
             </div>
@@ -129,11 +128,11 @@ function eliminarCantidad(productoID) {
         const producto = carritoGuardado[productoIndex];
 
         if (producto.cantidad > 1) {
-            // Si la cantidad es mayor a 1, reduce la cantidad y ajusta el total
+            // Si la cantidad es mayor a 1, reduce la cantidad y ajusta el precio total
             producto.cantidad--;
             totalGuardado -= producto.precioConIva;
         } else {
-            // Si la cantidad es 1, elimina el producto del carrito y actualiza el total
+            // Si la cantidad es 1, elimina el producto del carrito y actualiza el precio total
             totalGuardado -= producto.precioConIva;
             carritoGuardado.splice(productoIndex, 1);
         }
@@ -169,7 +168,7 @@ mostrarCarrito()
 
      enviarEmail.setAttribute(
         'href',
-        `mailTo:javier_hp05@hotmail.com?subject=${fd.get('nombre')} ${fd.get('apellido')}&body=${fd.get('tel')}  /  ${fd.get('direccion')}  /  ${fd.get('localidad')}  /  ${fd.get('postal')}`
+        `mailTo:javier_hp05@hotmail.com?subject=${fd.get('nombre')} ${fd.get('apellido')}&body= Tel: ${fd.get('tel')}  /  ${fd.get('direccion')},  ${fd.get('localidad')}  /  Codigo Postal: ${fd.get('postal')}`
     );
      
     enviarEmail.click();

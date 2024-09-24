@@ -14,17 +14,20 @@ let carrito = JSON.parse(localStorage.getItem('Carrito de Compras')) || [];
 let totalCarrito = JSON.parse(localStorage.getItem('Precio Total')) ?? 0;
 
 //Muestra el precio total del carrito
-let mostrarTotalCarrito = document.createElement("h3");
+let mostrarTotalCarrito = document.createElement("h5");
 mostrarTotalCarrito.innerText = `Total del Carrito: $${totalCarrito}`;
 mostrarTotalCarrito.style.cssText = "color: #24ff6a";
 mostrarTotalCarrito.style.position = "absolute";
 mostrarTotalCarrito.style.top = "64px";
-mostrarTotalCarrito.style.right = "20px";
+mostrarTotalCarrito.style.right = "3%";
 mostrarTotalCarrito.style.zIndex = "10";
 mostrarTotalCarrito.style.background = "white";
 mostrarTotalCarrito.style.padding = "10px";
 mostrarTotalCarrito.style.borderBottomRightRadius = "10px";
 mostrarTotalCarrito.style.borderBottomLeftRadius = "10px";
+mostrarTotalCarrito.style.borderBottomWidth = "1px";
+mostrarTotalCarrito.style.borderBottomStyle = "solid";
+mostrarTotalCarrito.style.borderBottomColor = "#24ff6a";
 
 tituloTotalCarrito.appendChild(mostrarTotalCarrito);
 
@@ -78,7 +81,7 @@ fetch("js/productos.json")
                 const product = data.find(p => p.idProducto === parseInt(productoId));
 
                 const productoEnCarrito = carrito.find(item => item.id === product.idProducto);
-
+                
                 if (productoEnCarrito) { // Si existe, incrementar la cantidad.
                     productoEnCarrito.cantidad += 1;
                 } else {  // Si no existe, agregar el producto al carrito.

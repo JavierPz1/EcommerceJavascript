@@ -28,6 +28,9 @@ navegador.style.paddingRight = "3%"
 navegador.style.display = "flex";
 navegador.style.justifyContent = "space-between";
 navegador.style.zIndex = "10";
+navegador.style.borderBottomWidth = "1px";
+navegador.style.borderBottomStyle = "solid";
+navegador.style.borderBottomColor = "#24ff6a";
 
 //Logo........................................
 const logo = document.createElement("h1");

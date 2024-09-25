@@ -43,8 +43,9 @@ divFormulario.style.flexDirection = "column";
 
 const formulario = document.createElement("form");
 formulario.style.marginBottom = "50px";
+formulario.action = "https://formsubmit.co/dcbc41bfd87550891229417a73a7e444";
+formulario.method = "POST";
 
-const enviarEmail = document.createElement("a");
 
 formularioContenedor.appendChild(divFormulario);
 divFormulario.appendChild(formulario);
@@ -52,35 +53,38 @@ divFormulario.appendChild(formulario);
 formulario.innerHTML = `
 <div class="input-group mb-3">
   <label for="nombre"></label>
-  <input id="nombre" name="nombre" type="text" aria-label="Nombres" class="form-control" placeholder="Nombre">
+  <input id="nombre" name="nombre" type="text" aria-label="Nombres" class="form-control" placeholder="Nombre" required>
   <label for="nombre"></label>
-  <input id="apellido" name="apellido" type="text" aria-label="Apellidos" class="form-control" placeholder="Apellido">
+  <input id="apellido" name="apellido" type="text" aria-label="Apellidos" class="form-control" placeholder="Apellido" required>
 </div>
 
 <div>
     <label for="tel" class="d-none"></label>
-    <input id="tel" name="tel" type="number" class="form-control mb-3" aria-label="Numero de celular" placeholder="Tel/Cel">
+    <input id="tel" name="tel" type="number" class="form-control mb-3" aria-label="Numero de celular" placeholder="Tel/Cel" required>
 
     <div class="row g-3">
         <div class="col-sm-5">
             <label for="direccion" class="d-none"></label>
-            <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion">
+            <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
         </div>
         <div class="col-sm">
             <label for="localidad" class="d-none"></label>
-            <input id="localidad" name="localidad" type="text" class="form-control" placeholder="Localidad" aria-label="Localidad">
+            <input id="localidad" name="localidad" type="text" class="form-control" placeholder="Localidad" aria-label="Localidad" required>
         </div>
         <div class="col-sm">
             <label for="postal" class="d-none"></label>
-            <input id="postal" name="postal" type="number" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal">
+            <input id="postal" name="postal" type="number" class="form-control" placeholder="Codigo Postal" aria-label="Codigo Postal" required>
         </div>
-        
     </div>
 </div>
-<p class="form-text my-3 ms-2">Llegará tu pedido en 2 dias hábiles!!</p>`;
+<p class="form-text my-3 ms-2">Llegará tu pedido en 2 dias hábiles!!</p>
+<input type="hidden" name="_subject" value="Pedido de Envio!">
+<input type="hidden" name="_template" value="table">
+<entrada type="hidden" name="_captcha" value="false">
+<entrada type="hidden" name="_next" value="http://127.0.0.1:5500/carrito.html">`;
+
 
 formulario.appendChild(botonConfirmarCompra);
-formulario.appendChild(enviarEmail);
 
 
 // Funcion para mostrar los productos del carrito
@@ -159,19 +163,3 @@ function eliminarDelCarrito(index) {
 }
 
 mostrarCarrito()
-
-
-
- function enviarPedidoEmail(event) {
-    event.preventDefault();
-    const fd = new FormData(formulario);
-
-     enviarEmail.setAttribute(
-        'href',
-        `mailTo:javier_hp05@hotmail.com?subject=${fd.get('nombre')} ${fd.get('apellido')}&body= Tel: ${fd.get('tel')}  /  ${fd.get('direccion')},  ${fd.get('localidad')}  /  Codigo Postal: ${fd.get('postal')}`
-    );
-     
-    enviarEmail.click();
-}
-
-formulario.addEventListener('submit', enviarPedidoEmail);
